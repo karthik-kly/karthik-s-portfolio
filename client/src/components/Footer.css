@@ -1,0 +1,20 @@
+.footer {
+  background: var(--bg2);
+  border-top: 1px solid var(--border);
+  padding: 28px 0;
+}
+.footer-inner {
+  display: flex; align-items: center;
+  justify-content: space-between; flex-wrap: wrap; gap: 12px;
+}
+.f-logo {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem; font-weight: 800;
+  color: var(--white); text-decoration: none; letter-spacing: -0.01em;
+}
+.f-logo span { color: var(--purple); }
+.f-copy  { font-size: 0.78rem; color: var(--text2); }
+.f-right { font-size: 0.72rem; color: rgba(124,92,252,.4); }
+@media (max-width: 640px) {
+  .footer-inner { flex-direction: column; text-align: center; }
+}

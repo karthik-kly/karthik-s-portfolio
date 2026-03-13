@@ -1,0 +1,69 @@
+.proj-grid {
+  display: grid; grid-template-columns: repeat(2,1fr);
+  gap: 16px; margin-bottom: 20px;
+}
+
+.proj-card {
+  position: relative; background: var(--bg3);
+  border: 1px solid var(--border); border-radius: 8px;
+  padding: 32px; display: flex; flex-direction: column;
+  gap: 14px; overflow: hidden;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.proj-card:hover { border-color: var(--border2); transform: translateY(-6px); }
+.proj-feat { border-color: rgba(124,92,252,.2); }
+
+.proj-glow {
+  position: absolute; top: -50px; right: -50px;
+  width: 200px; height: 200px; border-radius: 50%;
+  background: radial-gradient(circle, var(--purple-glow), transparent 70%);
+  pointer-events: none; opacity: 0; transition: opacity 0.4s;
+}
+.proj-card:hover .proj-glow { opacity: 1; }
+
+.proj-num {
+  font-family: 'Syne', sans-serif; font-size: 4rem; font-weight: 800;
+  color: rgba(124,92,252,.1); line-height: 1;
+  position: absolute; top: 12px; right: 20px; pointer-events: none;
+}
+
+.proj-title {
+  font-family: 'Syne', sans-serif;
+  font-size: 1.2rem; font-weight: 700;
+  color: var(--white); position: relative; z-index: 1;
+}
+
+.proj-desc {
+  font-size: 0.875rem; font-weight: 300;
+  color: var(--text2); line-height: 1.8; flex: 1;
+  position: relative; z-index: 1;
+}
+
+.proj-foot {
+  display: flex; align-items: center;
+  justify-content: space-between; margin-top: auto;
+}
+.proj-tags { display: flex; gap: 6px; flex-wrap: wrap; }
+.proj-tags span {
+  font-size: 10px; font-weight: 700;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  padding: 4px 10px; border-radius: 4px;
+  background: var(--purple-dim);
+  border: 1px solid var(--border2); color: var(--purple2);
+}
+
+.parrow {
+  font-size: 1.15rem; color: var(--purple);
+  opacity: 0; transition: opacity 0.25s, transform 0.25s;
+}
+.proj-card:hover .parrow { opacity: 1; transform: translate(3px,-3px); }
+
+.proj-note {
+  font-size: 0.85rem; color: var(--text2);
+  font-weight: 300; text-align: center;
+  font-style: italic; padding: 12px 0;
+}
+
+@media (max-width: 640px) {
+  .proj-grid { grid-template-columns: 1fr; }
+}

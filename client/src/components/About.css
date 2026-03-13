@@ -1,0 +1,30 @@
+.about-grid {
+  display: grid; grid-template-columns: 1fr 1fr;
+  gap: 72px; align-items: start;
+}
+.about-left .label { display: block; }
+.about-left .title  { margin-bottom: 24px; }
+.about-text p {
+  font-size: 0.94rem; font-weight: 300;
+  color: var(--text2); line-height: 1.95; margin-bottom: 16px;
+}
+.about-text strong { color: var(--text); font-weight: 600; }
+.about-cta { margin-top: 28px; }
+
+.info-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; }
+.info-card {
+  display: flex; align-items: flex-start; gap: 12px;
+  padding: 16px; background: var(--bg3);
+  border: 1px solid var(--border); border-radius: 6px;
+  transition: border-color 0.3s, transform 0.3s;
+}
+.info-card:hover { border-color: var(--border2); transform: translateY(-2px); }
+.ic-icon { font-size: 1.2rem; flex-shrink: 0; margin-top: 1px; }
+.ic-text strong {
+  display: block; font-size: 0.83rem; font-weight: 700;
+  color: var(--text); margin-bottom: 3px;
+}
+.ic-text span { font-size: 0.72rem; font-weight: 400; color: var(--text2); line-height: 1.4; }
+
+@media (max-width: 900px) { .about-grid { grid-template-columns: 1fr; gap: 48px; } }
+@media (max-width: 500px)  { .info-grid  { grid-template-columns: 1fr; } }

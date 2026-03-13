@@ -1,0 +1,301 @@
+/* ═══════════════════════════════════════
+   HERO — Exact match to reference video
+   Pure black · Letter blur stagger ·
+   Centered layout · Purple last K
+═══════════════════════════════════════ */
+
+/* ── KEYFRAMES ── */
+
+/* Each letter: blur + slide up from below */
+@keyframes letterReveal {
+  from {
+    opacity: 0;
+    filter: blur(18px);
+    transform: translateY(80px);
+  }
+  to {
+    opacity: 1;
+    filter: blur(0px);
+    transform: translateY(0);
+  }
+}
+
+/* Simple fade in for supporting elements */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Pulsing scroll line */
+@keyframes scrollPulse {
+  0%,
+  100% {
+    transform: scaleY(1);
+    opacity: 0.4;
+  }
+  50% {
+    transform: scaleY(1.3);
+    opacity: 1;
+  }
+}
+
+/* Green dot pulse */
+@keyframes dotGlow {
+  0%,
+  100% {
+    box-shadow: 0 0 0 0 rgba(74, 222, 128, 0.6);
+  }
+  50% {
+    box-shadow: 0 0 0 7px rgba(74, 222, 128, 0);
+  }
+}
+
+/* Slow rotate for circle */
+@keyframes circleSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ── SECTION ── */
+.hero {
+  position: relative;
+  width: 100%;
+  min-height: 100vh;
+  background: #000;
+  overflow: hidden;
+
+  /* Everything centred in this column */
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: center;
+  padding: 0 6%;
+  padding-top: 64px; /* navbar height */
+}
+
+/* ── PORTFOLIO 2026 ── */
+.h-eyebrow {
+  position: absolute;
+  top: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: rgba(237, 237, 240, 0.35);
+  white-space: nowrap;
+
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards 0.2s;
+}
+
+/* ── GIANT NAME ── */
+.h-name {
+  display: flex;
+  align-items: baseline;
+  justify-content: center; /* center horizontally */
+  gap: 0.02em;
+  line-height: 1;
+  margin: 0;
+  position: relative;
+  z-index: 2;
+  width: 100%; /* allow centering across full width */
+}
+
+.h-letter {
+  display: inline-block;
+  font-family: "Syne", sans-serif;
+  font-size: clamp(4rem, 10vw, 9rem); /* reduced */
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: #ededf0;
+  line-height: 0.9;
+
+  opacity: 0;
+  animation: letterReveal 0.85s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+}
+
+/* Last letter K is purple */
+.h-letter-purple {
+  color: #7c5cfc;
+}
+
+/* ── WEB DEVELOPER ── */
+.h-role {
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.7rem, 1.4vw, 1rem);
+  font-weight: 500;
+  letter-spacing: 0.45em;
+  text-transform: uppercase;
+  color: #444455;
+  margin-top: 0.6rem;
+  position: relative;
+  z-index: 2;
+
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards 1.8s;
+}
+
+/* ── TAGLINE — absolute bottom center ── */
+.h-tagline {
+  position: absolute;
+  bottom: 18%;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 90%;
+  text-align: center;
+
+  font-family: "DM Sans", sans-serif;
+  font-size: clamp(0.75rem, 1.2vw, 0.92rem);
+  font-weight: 300;
+  color: rgba(237, 237, 240, 0.4);
+  letter-spacing: 0.04em;
+  line-height: 1.7;
+  white-space: nowrap;
+
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards 2.3s;
+}
+
+/* ── SCROLL + LINE — bottom center ── */
+.h-scroll {
+  position: absolute;
+  bottom: 5%;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards 2.8s;
+}
+
+.h-scroll-label {
+  font-family: "DM Sans", sans-serif;
+  font-size: 9px;
+  font-weight: 600;
+  letter-spacing: 0.4em;
+  text-transform: uppercase;
+  color: rgba(237, 237, 240, 0.25);
+}
+
+.h-scroll-line {
+  width: 1px;
+  height: 52px;
+  background: linear-gradient(to bottom, #7c5cfc, rgba(124, 92, 252, 0));
+  transform-origin: top;
+  animation: scrollPulse 2s ease-in-out infinite 3s;
+}
+
+/* ── DECORATIVE CIRCLE — top right ── */
+.h-circle {
+  position: absolute;
+  top: 8%;
+  right: 3%;
+  width: clamp(160px, 18vw, 280px);
+  height: clamp(160px, 18vw, 280px);
+  border-radius: 50%;
+  border: 1px solid rgba(124, 92, 252, 0.18);
+  pointer-events: none;
+  z-index: 1;
+
+  opacity: 0;
+  animation: fadeIn 1s ease forwards 3s;
+}
+
+.h-circle-inner {
+  position: absolute;
+  inset: 20%;
+  border-radius: 50%;
+  border: 1px solid rgba(124, 92, 252, 0.08);
+}
+
+/* ── AVAILABLE FOR WORK — bottom right ── */
+.h-available {
+  position: absolute;
+  bottom: 6%;
+  right: 5%;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  z-index: 3;
+
+  opacity: 0;
+  animation: fadeIn 0.8s ease forwards 3s;
+}
+
+.h-available span:last-child {
+  font-family: "DM Sans", sans-serif;
+  font-size: 11px;
+  font-weight: 600;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(237, 237, 240, 0.45);
+}
+
+.avail-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #4ade80;
+  flex-shrink: 0;
+  animation: dotGlow 2.2s ease-in-out infinite;
+}
+
+/* ── MOBILE ── */
+@media (max-width: 768px) {
+  .hero {
+    padding: 0 5%;
+    padding-top: 64px;
+  }
+
+  .h-eyebrow {
+    top: 12%;
+    font-size: 9px;
+    letter-spacing: 0.3em;
+  }
+
+  .h-tagline {
+    font-size: 0.7rem;
+    white-space: normal;
+    bottom: 22%;
+    width: 86%;
+  }
+
+  .h-circle {
+    display: none;
+  }
+
+  .h-available {
+    display: none;
+  }
+
+  .h-scroll {
+    bottom: 4%;
+  }
+}
+
+@media (max-width: 480px) {
+  .h-letter {
+    font-size: clamp(3.2rem, 16vw, 5rem);
+  }
+  .h-eyebrow {
+    display: none;
+  }
+}
