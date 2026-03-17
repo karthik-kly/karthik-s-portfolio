@@ -12,7 +12,7 @@ const PORT = process.env.PORT || 5002;
 // ── MIDDLEWARE ───────────────────────────────
 app.use(
   cors({
-    origin: "http://localhost:5173",
+    origin: "*",
     credentials: true,
   }),
 );
@@ -23,6 +23,10 @@ app.use(express.urlencoded({ extended: true }));
 // ── ROUTES ───────────────────────────────────
 app.use("/api/contact", contactRoutes);
 app.use("/api/visitor", visitorRoutes);
+
+app.get("/", (req, res) => {
+  res.send("Karthik Portfolio API is running 🚀");
+});
 
 // Health check
 app.get("/api/health", (req, res) => {
