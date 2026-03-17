@@ -35,6 +35,7 @@ export default function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     const validationErrors = validate();
+
     if (Object.keys(validationErrors).length > 0) {
       setErrors(validationErrors);
       return;
@@ -44,12 +45,14 @@ export default function Contact() {
     setMsg("");
 
     try {
-      // POST to Express → saved in MongoDB
-      const res = await fetch("/api/contact", {
+      const res = await fetch("http://localhost:5002/api/contact", {
         method: "POST",
-        headers: { "Content-Type": "application/json" },
+        headers: {
+          "Content-Type": "application/json",
+        },
         body: JSON.stringify(form),
       });
+
       const data = await res.json();
 
       if (data.success) {
@@ -59,13 +62,12 @@ export default function Contact() {
         setErrors({});
       } else {
         setStatus("error");
-        setMsg("❌ " + (data.error || "Something went wrong."));
+        setMsg("❌ " + (data.message || "Something went wrong."));
       }
-    } catch {
+    } catch (error) {
+      console.error(error);
       setStatus("error");
-      setMsg(
-        "❌ Cannot reach server. Make sure backend is running on port 5000.",
-      );
+      setMsg("❌ Cannot reach backend server.");
     }
   };
 
@@ -85,7 +87,7 @@ export default function Contact() {
             <p className="contact-sub">
               Open to internships, fresher roles &amp; collaborations.
               <br />
-              Fill the form 
+              Fill the form
             </p>
 
             <div className="info-cards">
